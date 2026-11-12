@@ -1,21 +1,202 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shanza Anum | Software Engineering Student</title>
+<meta name="description" content="Portfolio of Shanza Anum, BS Software Engineering student learning cloud computing, Linux and Git.">
 <style>
-body { font-family: Arial; max-width: 700px; margin: 40px auto; }
-h1 { color: #1F3864; }
+  :root {
+    --navy: #1F3864;
+    --navy-deep: #14264a;
+    --sky: #dbe6f7;
+    --paper: #f7f9fc;
+    --ink: #1c2433;
+    --muted: #5b6678;
+    --line: #d5dce8;
+    --accent: #2f6fd6;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+  }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  .nav { background: var(--navy-deep); color: #fff; }
+  .nav-inner {
+    max-width: 960px; margin: 0 auto; padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .nav strong { font-weight: 600; letter-spacing: .2px; }
+  .nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+  .nav a { color: #cfdcf5; text-decoration: none; font-size: .95rem; }
+  .nav a:hover { color: #fff; }
+
+  .hero { background: var(--navy); color: #fff; }
+  .hero-inner {
+    max-width: 960px; margin: 0 auto; padding: 72px 24px 80px;
+    display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center;
+  }
+  .hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    line-height: 1.1; margin: 0 0 14px; font-weight: 700;
+  }
+  .hero p.role { font-size: 1.15rem; color: #cfdcf5; margin: 0 0 28px; max-width: 34ch; }
+  .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 11px 22px; border-radius: 6px;
+    text-decoration: none; font-weight: 600; font-size: .98rem;
+  }
+  .btn.primary { background: #fff; color: var(--navy); }
+  .btn.primary:hover { background: var(--sky); }
+  .btn.ghost { border: 1.5px solid #8fa8d6; color: #fff; }
+  .btn.ghost:hover { background: rgba(255,255,255,.1); }
+
+  .term {
+    background: #0d1626; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0,0,0,.35);
+    font-family: Consolas, "Courier New", monospace; font-size: .9rem;
+  }
+  .term-bar { background: #1b2740; padding: 9px 14px; display: flex; gap: 7px; }
+  .term-bar span { width: 11px; height: 11px; border-radius: 50%; background: #4a5a7a; }
+  .term-body { padding: 18px 18px 20px; color: #c9d6ee; }
+  .term-body .cmd { color: #fff; }
+  .term-body .cmd::before { content: "$ "; color: #6fb1ff; }
+  .term-body .out { color: #8fa3c7; margin: 2px 0 14px; }
+  .term-body .out b { color: #7ee0a6; font-weight: 400; }
+
+  main { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 64px 0 8px; }
+  h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--navy); font-size: 1.9rem; margin: 0 0 20px;
+  }
+  .lead { max-width: 62ch; color: var(--muted); font-size: 1.05rem; margin: 0; }
+
+  .skills { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0; list-style: none; }
+  .skills li {
+    background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--accent);
+    padding: 8px 16px; border-radius: 4px; font-weight: 500;
+  }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 22px; }
+  .card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.1rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .98rem; }
+
+  .contact a { font-weight: 600; }
+  footer {
+    margin-top: 72px; border-top: 1px solid var(--line);
+    padding: 24px; text-align: center; color: var(--muted); font-size: .9rem;
+  }
+
+  @media (max-width: 760px) {
+    .hero-inner { grid-template-columns: 1fr; padding: 48px 24px 56px; gap: 36px; }
+    .nav ul { gap: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
-<h1>Shanza Anum</h1>
-<p>BS Software Engineering student | Cloud Computing learner</p>
-<h2>My Skills</h2>
-<ul>
-<li>Linux and Git</li>
-<li>Python</li>
-<li>Cloud Computing basics</li>
-</ul>
-<p>Email: yourname@example.com</p>
+
+<header class="nav">
+  <div class="nav-inner">
+    <strong>Shanza Anum</strong>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#labs">Lab work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Shanza Anum</h1>
+      <p class="role">BS Software Engineering student building skills in cloud computing, Linux and Git.</p>
+      <div class="btns">
+        <a class="btn primary" href="#labs">See my lab work</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="term" aria-hidden="true">
+      <div class="term-bar"><span></span><span></span><span></span></div>
+      <div class="term-body">
+        <div class="cmd">git push origin main</div>
+        <div class="out"><b>main -&gt; main</b> (pushed to GitHub)</div>
+        <div class="cmd">git log --oneline -2</div>
+        <div class="out">Add my website<br>Revert "Add mistake file"</div>
+        <div class="cmd">echo "Hello, cloud"</div>
+        <div class="out">Hello, cloud</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section id="about">
+    <h2>About me</h2>
+    <p class="lead">
+      I am a Software Engineering student at university. This semester I am learning how teams build and
+      ship software on the cloud, from version control with Git to publishing websites on GitHub Pages.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul class="skills">
+      <li>Linux</li>
+      <li>Git and GitHub</li>
+      <li>Python</li>
+      <li>HTML and CSS</li>
+      <li>Cloud Computing basics</li>
+    </ul>
+  </section>
+
+  <section id="labs">
+    <h2>Cloud Computing lab work</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Working in a team with Git</h3>
+        <p>Fixed rejected pushes and merge conflicts, and used stash to switch tasks without losing work.</p>
+      </div>
+      <div class="card">
+        <h3>Keeping repositories clean</h3>
+        <p>Used .gitignore to keep private and junk files out of GitHub.</p>
+      </div>
+      <div class="card">
+        <h3>Undoing mistakes safely</h3>
+        <p>Used reset for local commits and revert for commits already pushed.</p>
+      </div>
+      <div class="card">
+        <h3>This website</h3>
+        <p>Hosted for free on GitHub Pages, which runs on GitHub's cloud servers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p class="lead">
+      Email: <a href="mailto:yourname@example.com">yourname@example.com</a><br>
+      GitHub: <a href="https://github.com/shanzaanum7-hub">github.com/shanzaanum7-hub</a>
+    </p>
+  </section>
+</main>
+
+<footer>&copy; 2026 Shanza Anum. Hosted on GitHub Pages.</footer>
+
 </body>
 </html>
